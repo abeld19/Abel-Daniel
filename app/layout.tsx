@@ -3,22 +3,22 @@ import { Inter } from "@next/font/google";
 import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "Abel Daniel",
+    template: "%s | Abel Daniel",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Portfolio of Abel Daniel",
   openGraph: {
-    title: "chronark.com",
-    description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+    title: "Abel Daniel",
+    description: "Portfolio of Abel Daniel",
+    url: "https://abeldaniel.com",
+    siteName: "Abel Daniel",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "https://abeldaniel.com/og.png",
         width: 1920,
         height: 1080,
       },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Abel Daniel",
     card: "summary_large_image",
   },
   icons: {
@@ -62,9 +62,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={[inter.variable, calSans.variable].join(" ")}>
-      <head>
-        <Analytics />
-      </head>
+      <Head>
+        <title>Abel Daniel</title>
+        <meta name="description" content="Portfolio of Abel Daniel" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body
         className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
           }`}

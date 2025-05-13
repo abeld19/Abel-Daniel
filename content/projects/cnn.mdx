@@ -1,0 +1,13 @@
+---
+title: MNIST CNN 
+description: Self-contained Jupyter notebook that trains a lightweight CNN on MNIST to 99.4 % accuracy in minutes.
+date: "2025-05-01"
+published: true
+  
+---
+
+A single, self-contained Jupyter notebook fetches and normalises the MNIST digits, holds out a validation split, and trains a lean three-block convolutional network, fewer than two million parameters, each block tempered with Batch Normalisation and Dropout. An ImageDataGenerator spins the digits through subtle rotations and shifts while early-stopping and TensorBoard callbacks give live, trustworthy feedback; in under eight minutes on a free Colab GPU the model reaches roughly 99.4 % test accuracy. Evaluation cells surface a colour-coded confusion matrix and per-class F1 scores so weaknesses emerge instantly. The notebook then exports the final network as both H5 and ONNX bundles for effortless reuse in TensorFlow-Lite, PyTorch or JavaScript, and closes with an inference helper that converts any 28 × 28 sketch into ranked digit predictions, delivering a complete, reproducible deep-learning reference without external infrastructure.
+
+
+![](/cnn.png)
+

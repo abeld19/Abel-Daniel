@@ -1,0 +1,23 @@
+---
+title: Interactive map for nature reserve 
+description: Explore a living map of the nature reserve. Click any habitat to learn its story and upload wildlife photos. A smart crop-and-identify model suggests the species and adds a Wikipedia note, enriching the shared gallery with every sighting.
+date: "2025-05-01"
+url: https://www.doc.gold.ac.uk/usr/176/users/login
+published: true
+  
+---
+
+
+ 
+
+
+Visitors begin on an illustrated map of the reserve that feels like a digital brochure. The map is delivered by an EJS view from a Node.js + Express server, and every pin is defined in a small JSON list that the server injects into the page. Click a pin and a concise panel appears, describing that corner of the landscape. Mushroom Alley, Pond and so on, drawn from entries held in MySQL. Visitors cannot change what is shown there. Instead, a single click anywhere on the map reveals the exact spot of interest; confirm it and that position is passed forward to the wildlife-sighting form so that, when a photograph is submitted, the place is stored alongside the image and notes.
+
+![](/map.png) 
+
+
+When a guest uploads a photograph the experience turns into a gentle collaboration between person and computer. A cropping tool built with Cropper JS appears first, letting the visitor frame only the plant or animal they want the model prediction to examine while the untouched original is uploaded through an Express route guarded by Multer. A lightweight Python helper then calls a ResNet-50 model hosted on Hugging Face and returns a suggested species name, which appears in a courteous confirmation box; the visitor may accept it or replace it with their own wording. The confirmed name is routed through Axios to Wikipedia’s REST API, and a concise description flows back automatically so that every new sighting arrives complete with background information without the contributor having to look anything up.
+
+![](/sighting.png)
+
+The image itself passes through a carefully tuned gateway that refuses files larger than ten megabytes or in the wrong format, protecting the server from oversized or malicious uploads. Once accepted, the sighting is written to MySQL with parameterised queries, session-managed by Passport.js and bcrypt, and appears at once in the shared gallery where other visitors can like it, comment on it, or if it is their own delete it. The result is a polished application that blends modern computer vision, thoughtful human oversight and trusted external knowledge, turning casual snapshots into curated scientific observations that enrich both the map and the community.

@@ -1,0 +1,13 @@
+---
+title: Infrared Fever Screening
+description: Self-contained notebook that predicts oral temperature from infrared scans (RMSE ≈ 0.22 °C) with a 1-D CNN and auto-flags fevers for instant triage.
+date: "2025-05-01"
+published: true
+  
+---
+
+A single Jupyter notebook delivers the whole contact-free fever-screening pipeline: it loads the public infrared-thermography dataset (≈1 k subjects with 33 facial + environmental features), applies nested cross-validation to avoid leakage, and engineers domain-aware signals such as inner-canthus focus, humidity, distance and demographic one-hots. After benchmarking classic learners, linear regression, random forest, a strong binning regressor—a 1-D CNN with L2 regularisation and dropout wins, cutting error to about 0.222 °C, well inside commercial IR-gun tolerances. One threshold (≥38 °C) instantly converts predictions to fever/not-fever, with a confusion matrix printed for sensitivity checks. A helper cell that returns both the temperature estimate and fever verdict.
+
+
+
+
